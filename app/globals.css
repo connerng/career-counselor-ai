@@ -22,19 +22,8 @@
   animation: gradient 120s ease-in-out infinite;
 }
 
-.wave-background {
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
-              linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
-              linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  /* background-size: 100% 100%, 100% 100%, 100% 100%;
-  -webkit-animation: wave 7s infinite linear; */
+.sendButton {
+  width: 100px;
+  background-color:lightskyblue;
 }
 
-@keyframes wave {
-  0% {
-    background-position: 0% 50%, 100% 50%, 0 0;
-  }
-  100% {
-    background-position: 50% 50%, 0% 50%, 50% 0;
-  }
-}

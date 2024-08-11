@@ -1,7 +1,8 @@
 'use client'
 import Image from "next/image"
-import {useState} from 'react'
-import { Box, Button, Stack, TextField, Typography } from '@mui/material'
+import { useEffect, useRef, useState } from 'react'
+import { Box, Button, IconButton, Stack, TextField, Typography } from '@mui/material'
+import SendIcon from "@mui/icons-material/Send"
 import "./globals.css"
 
 
@@ -12,8 +13,23 @@ export default function Home() {
   }])
 
   const [message, setMessage] = useState ('')
+  const [isLoading, setIsLoading] = useState(false)
+  const messagesEndRef = useRef(null)
+
+  const autoScroll = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth'})
+  }
+
+  useEffect(() => {
+    autoScroll()
+  }, [messages])
 
   const sendMessage = async() => {
+    if (!message.trim() || isLoading) {
+      return
+    };
+    setIsLoading(true)
+
     setMessage('')
     setMessages((messages)=>[
       ...messages,
@@ -51,8 +67,16 @@ export default function Home() {
         return reader.read().then(processText)
       })
     })
+    
+    setIsLoading(false)
   }
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault()
+      sendMessage()
+    }
+  }
 
 
   return (
@@ -77,7 +101,7 @@ export default function Home() {
         <Stack
           direction="column"
           width="600px"
-          height="700px"
+          height="85vh"
           border="2px solid white"
           borderRadius="3%"
           p={2}
@@ -86,12 +110,12 @@ export default function Home() {
             backdropFilter: 'blur(5px)'
           }}
         >
-          <Stack
+          <Stack id="messages"
             direction="column"
             spacing={2}
-            flexGrow={1}
             overflow="auto"
-            maxHeight="100%"
+            minHeight="85%"
+            maxHeight="85%"
           >
             {
               messages.map((message, index)=>(
@@ -109,37 +133,53 @@ export default function Home() {
                     color='white'
                     borderRadius={16}
                     p={3}
+                    boxShadow="1px 1px 1px black"
                   >
                     {message.content}
                   </Box>
                 </Box>
               ))
             }
+            <div ref={messagesEndRef} />
           </Stack>
           <Stack
             direction="row"
             spacing={2}
+            width="100%"
           >
-            <Box bgcolor='white' width="70vw">
+            <Box bgcolor='white' width="40vw">
               <TextField
                 variant="filled"
                 label="Type Message"
                 fullWidth
                 sx={{
                   color: 'white',
-                  border: '2px solid black'
+                  border: '2px solid black',
                 }}
                 value={message}
+                onKeyPress={handleKeyPress}
                 onChange={(e) => setMessage(e.target.value)}
+                disabled={isLoading}
               />
             </Box>
-            <Button 
-              variant="contained"
+            <IconButton
               sx={{
-                backgroundColor: 'black'
+                width: '80px',
+                bgcolor: '#1872f6',
+                borderRadius: '100%',
+                color: 'white',
+                fontWeight: 'bold',
+                ':hover': {
+                  bgcolor: 'white',
+                  color: '#1872f6',
+                  scale: '1.1'
+                }
               }}
               onClick={sendMessage}
-              >Send</Button>
+              
+              >
+                <SendIcon/>
+              </IconButton>
           </Stack>
         </Stack>
       </Box>
