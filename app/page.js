@@ -187,6 +187,7 @@ export default function Home() {
                 borderRadius: '100%',
                 color: 'white',
                 fontWeight: 'bold',
+                opacity: '0.8',
                 ':hover': {
                   bgcolor: 'white',
                   color: '#1872f6',
