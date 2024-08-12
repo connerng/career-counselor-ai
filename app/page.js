@@ -9,7 +9,7 @@ import "./globals.css"
 export default function Home() {
   const [messages, setMessages] = useState ([{
     role: 'assistant',
-    content: `Hi! I'm an AI-powered character roleplay chatbot. How can I assist you today?`,
+    content: `Hi! I'm an AI-powered career counselor, how can I assist you today?`,
   }])
 
   const [message, setMessage] = useState ('')
@@ -90,15 +90,31 @@ export default function Home() {
         alignItems="center"
         padding="10px"
       >
-        <Typography
-          sx={{
-            fontFamily: 'sans-serif',
-            fontSize: '1cm',
-            fontWeight: 'bold',
-            color: 'white',
-            textShadow: '2px 2px 1px black',
-          }}
-        >CHARACTER AI</Typography>
+        <Box
+          display="flex"
+          flexDirection="row"
+          gap="5px"
+          justify-content="center"
+          alignItems="center">
+          <Typography
+            sx={{
+              fontFamily: 'sans-serif',
+              fontSize: '1cm',
+              fontWeight: 'bold',
+              color: 'white',
+              textShadow: '2px 2px 1px black',
+            }}
+          >KAIHATSU</Typography>
+          <Typography
+            sx={{
+              fontFamily: 'sans-serif',
+              fontSize: '1cm',
+              fontWeight: 'bold',
+              color: 'black',
+              textShadow: '2px 2px 1px white',
+            }}
+          >AI</Typography>
+        </Box>
         <Stack
           direction="column"
           width="600px"
