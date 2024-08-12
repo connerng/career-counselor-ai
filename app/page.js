@@ -9,7 +9,7 @@ import "./globals.css"
 export default function Home() {
   const [messages, setMessages] = useState ([{
     role: 'assistant',
-    content: `Hi! I'm an AI-powered support agent, how can I assist you today?`,
+    content: `Hi! I'm an AI-powered character roleplay chatbot. How can I assist you today?`,
   }])
 
   const [message, setMessage] = useState ('')
@@ -92,12 +92,13 @@ export default function Home() {
       >
         <Typography
           sx={{
+            fontFamily: 'sans-serif',
             fontSize: '1cm',
             fontWeight: 'bold',
             color: 'white',
             textShadow: '1px 1px 1px black',
           }}
-        >AI CHATBOT</Typography>
+        >CHARACTER AI</Typography>
         <Stack
           direction="column"
           width="600px"
