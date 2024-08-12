@@ -99,16 +99,16 @@ export default function Home() {
           <Typography
             sx={{
               fontFamily: 'sans-serif',
-              fontSize: '1cm',
+              fontSize: '1.2cm',
               fontWeight: 'bold',
               color: 'white',
               textShadow: '2px 2px 1px black',
             }}
-          >KAIHATSU</Typography>
+          >GAIDO</Typography>
           <Typography
             sx={{
               fontFamily: 'sans-serif',
-              fontSize: '1cm',
+              fontSize: '1.2cm',
               fontWeight: 'bold',
               color: 'black',
               textShadow: '2px 2px 1px white',
