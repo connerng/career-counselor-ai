@@ -96,7 +96,7 @@ export default function Home() {
             fontSize: '1cm',
             fontWeight: 'bold',
             color: 'white',
-            textShadow: '1px 1px 1px black',
+            textShadow: '2px 2px 1px black',
           }}
         >CHARACTER AI</Typography>
         <Stack
@@ -132,7 +132,8 @@ export default function Home() {
                       message.role==='assistant' ? 'primary.main' : 'secondary.main'
                     }
                     color='white'
-                    borderRadius={16}
+                    borderRadius={12}
+                    maxWidth="80%"
                     p={3}
                     boxShadow="1px 1px 1px black"
                   >
@@ -183,6 +184,7 @@ export default function Home() {
               </IconButton>
           </Stack>
         </Stack>
+        <Typography fontSize="small" textAlign="center" color="white" p="">POWERED BY <a href="https://openai.com/">OpenAI</a></Typography>
       </Box>
     </Box>
       
